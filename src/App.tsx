@@ -439,14 +439,29 @@ function Field({ label, name, type = "text", required = false, error }: { label:
 function Contact() {
   const [status, setStatus] = useState<"idle"|"submitting"|"success"|"error">("idle");
   const [errors, setErrors] = useState<Record<string,string>>({});
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); const form = new FormData(e.currentTarget); const next: Record<string,string> = {};
     if (!form.get("name")) next.name = "Please enter your name";
     if (!form.get("phone")) next.phone = "Please enter a phone number";
     if (!form.get("email") || !String(form.get("email")).includes("@")) next.email = "Please enter a valid email";
     if (!form.get("consent")) next.consent = "Consent is required to send this form";
     setErrors(next); if (Object.keys(next).length) { setStatus("error"); return; }
-    setStatus("submitting"); window.setTimeout(()=>setStatus("success"), 1100);
+    setStatus("submitting");
+    try {
+      const response = await fetch("https://formspree.io/f/mzedblve", {
+        method: "POST",
+        body: form,
+        headers: { Accept: "application/json" },
+      });
+      if (response.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
   return <><PageHero eyebrow="Contact" title={<>Office contact<br /><em>information.</em></>} text="The form may be used to submit a brief enquiry. Please do not include sensitive personal or financial information." />
     <section className="section section--white"><div className="container contact-grid">
@@ -463,8 +478,9 @@ function Contact() {
           <Field label="Email" name="email" type="email" required error={errors.email}/>
           <label className="select-field"><span>Service or support required</span><select name="service" defaultValue=""><option value="" disabled>Select a service</option>{practiceAreas.map(x=><option key={x.title}>{x.title}</option>)}<option>Other / General Enquiry</option></select></label>
           <label className="textarea-field"><span>Message</span><textarea name="message" rows={5} placeholder="A brief outline of your requirement (do not include sensitive information)" /></label>
-          <label className={`checkbox ${errors.consent ? "checkbox--error":""}`}><input type="checkbox" name="consent"/><i><Icon name="check" size={14}/></i><span>I consent to Bondre Neve & Associates using my information to respond to this enquiry in accordance with India’s Digital Personal Data Protection Act, 2023 and the <button type="button">Privacy Policy</button>. *</span></label>
+          <label className={`checkbox ${errors.consent ? "checkbox--error":""}`}><input type="checkbox" name="consent" required/><i><Icon name="check" size={14}/></i><span>I consent to Bondre Neve & Associates using my information to respond to this enquiry in accordance with India’s Digital Personal Data Protection Act, 2023 and the <button type="button">Privacy Policy</button>. *</span></label>
           {errors.consent && <small className="consent-error">{errors.consent}</small>}
+          <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
           <Button type="submit" loading={status==="submitting"}>{status==="submitting" ? "Sending enquiry" : "Send enquiry"}</Button>
           <small className="form-note">Submitting this form does not create a client or professional relationship.</small>
         </>}
