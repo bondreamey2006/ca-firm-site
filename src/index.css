@@ -765,10 +765,7 @@ h1,h2,h3 { color: var(--blue); }
 
   /* Functional loading is the only continuous motion. */
   .spinner { animation-duration:var(--motion-slow); }
-  .mesh,.hero-orbit,.hero-shape,.hero-partner-card,.hero-glow,
-  .marquee>div,.state-graphic,.contact-band__orb,.floating-action {
-    animation:none;
-  }
+
   .form--shake { animation:none; }
 }
 
