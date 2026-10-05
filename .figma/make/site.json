@@ -1,0 +1,10 @@
+{
+  "description": "A refined, interactive website showcasing a Pune-based Chartered Accountancy firm's services with professional design, seamless navigation, and ICAI-compliant content.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
