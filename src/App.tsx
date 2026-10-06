@@ -346,7 +346,7 @@ function Home({ navigate }: { navigate: (r: Route) => void }) {
           <SectionTitle eyebrow="The firm" title={<>Bondre Neve<br /><em>& Associates.</em></>} />
           <p className="lead reveal">Bondre Neve & Associates is a Chartered Accountancy firm based in Pune with stated areas of practice in advisory, compliance, audit and GST representation.</p>
           <div className="partner-name reveal"><strong>CA Om Anil Bondre</strong><span>Founder Partner · ICAI Membership No. 646756</span></div>
-          <Button variant="ghost" onClick={() => navigate("about")}>Meet the partner</Button>
+          <Button variant="secondary" onClick={() => navigate("about")}>Meet the partner</Button>
         </div>
       </div>
     </section>

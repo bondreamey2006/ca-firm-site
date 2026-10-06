@@ -306,7 +306,7 @@ em {
   background: rgb(from var(--white) r g b / .1);
 }
 
-.button--ghost {
+.button.button--ghost {
   padding-left: 3px;
   color: inherit;
   background: transparent;
