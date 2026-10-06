@@ -167,7 +167,7 @@ function Header({ route, navigate }: { route: Route; navigate: (route: Route) =>
         <button className="brand" onClick={() => go("home")} aria-label="Go to home">
           <img src="/images/logo.png" alt="CA Logo" className="brand-mark" /><span><strong>Bondre Neve & Associates</strong><small>Chartered Accountants</small></span>
         </button>
-        <Button className="header-cta" onClick={() => go("contact")}>Contact the Office</Button>
+        <Button className="header-cta" onClick={() => go("contact")}>Connect us</Button>
         <button className="menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen(!menuOpen)}><Icon name={menuOpen ? "close" : "menu"} /></button>
       </div>
       <nav className="desktop-nav" aria-label="Primary navigation">
@@ -210,7 +210,7 @@ function Footer({ navigate }: { navigate: (r: Route) => void }) {
       <div><h4>Services</h4>{["Virtual CFO Services", "Business Advisory", "Process Automation", "Compliance Services", "Statutory & Tax Audits", "GST Representation"].map(l => <button key={l} onClick={() => navigate("service")}>{l}</button>)}</div>
       <div><h4>Contact</h4><a href={`tel:${contact.phone}`}>{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a><p>{contact.address}</p><a href="#/contact">View map & directions →</a><div className="social-links"><a href="https://in.linkedin.com/in/om-bondre-5575b3281" target="_blank" rel="noreferrer" aria-label="Open CA Om Anil Bondre on LinkedIn">in</a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=caombondre%40gmail.com" target="_blank" rel="noreferrer" aria-label="Compose an email to CA Om Anil Bondre in Gmail"><Icon name="mail" size={14} /></a></div></div>
     </div>
-    <div className="compliance-note"><strong>Client review note — ICAI compliance:</strong> This prototype intentionally excludes testimonials, ratings, client identities, promotional statistics, awards, guarantees, fee offers and comparative or superlative claims. Final content should be reviewed against the ICAI Code of Ethics before publication.</div>
+
     <div className="footer__bottom"><span>© {new Date().getFullYear()} Bondre Neve & Associates. All rights reserved.</span><span><button onClick={() => navigate("privacy")}>Privacy</button> · <button onClick={() => navigate("terms")}>Terms</button> · <button onClick={() => navigate("disclaimer")}>Disclaimer</button> · <button onClick={() => navigate("motion")}>Motion</button> · <button onClick={() => navigate("style-guide")}>Style Guide</button></span><span>This website is for general information and does not constitute solicitation or advertisement.</span></div>
   </footer>;
 }
@@ -314,7 +314,7 @@ function Home({ navigate }: { navigate: (r: Route) => void }) {
           </h1>
           <p className="hero__intro hero-reveal" style={{ "--d": 10 } as React.CSSProperties}>Information on tax, audit, advisory and compliance services for businesses and individuals.</p>
           <div className="hero__actions hero-reveal" style={{ "--d": 11 } as React.CSSProperties}>
-            <Button onClick={() => navigate("contact")}>Contact the Office</Button>
+            <Button onClick={() => navigate("contact")}>Connect us</Button>
             <Button variant="secondary" onClick={() => navigate("services")}>Our Services</Button>
           </div>
         </div>

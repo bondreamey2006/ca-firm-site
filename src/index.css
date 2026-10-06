@@ -1178,19 +1178,6 @@ em {
   color: var(--green);
 }
 
-.compliance-note {
-  border: 1px solid rgb(from var(--green) r g b / .18);
-  background: rgb(from var(--green) r g b / .045);
-  border-radius: 10px;
-  padding: 16px 19px;
-  color: var(--text-on-dark-muted);
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-.compliance-note strong {
-  color: var(--text-on-dark-strong);
-}
 
 .footer__bottom {
   border-top: 1px solid rgb(from var(--white) r g b / .08);
@@ -4993,7 +4980,7 @@ h3 {
 .modal-card,
 .map-placeholder,
 .offline-fallback,
-.compliance-note,
+
 .approach-step {
   border-radius: var(--radius-md);
 }
