@@ -10,13 +10,12 @@ type Route =
   | "privacy"
   | "terms"
   | "disclaimer"
-  | "motion"
-  | "style-guide"
+
   | "404"
   | "500"
   | "maintenance";
 
-const routes: Route[] = ["home", "about", "services", "service", "industries", "contact", "privacy", "terms", "disclaimer", "motion", "style-guide", "404", "500", "maintenance"];
+const routes: Route[] = ["home", "about", "services", "service", "industries", "contact", "privacy", "terms", "disclaimer", "404", "500", "maintenance"];
 const routeFromHash = (): Route => {
   const hash = window.location.hash.replace(/^#\/?/, "") as Route;
   return routes.includes(hash) ? hash : "home";
@@ -211,7 +210,7 @@ function Footer({ navigate }: { navigate: (r: Route) => void }) {
       <div><h4>Contact</h4><a href={`tel:${contact.phone}`}>{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a><p>{contact.address}</p><a href="#/contact">View map & directions →</a><div className="social-links"><a href="https://in.linkedin.com/in/om-bondre-5575b3281" target="_blank" rel="noreferrer" aria-label="Open CA Om Anil Bondre on LinkedIn">in</a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=caombondre%40gmail.com" target="_blank" rel="noreferrer" aria-label="Compose an email to CA Om Anil Bondre in Gmail"><Icon name="mail" size={14} /></a></div></div>
     </div>
 
-    <div className="footer__bottom"><span>© {new Date().getFullYear()} Bondre Neve & Associates. All rights reserved.</span><span><button onClick={() => navigate("privacy")}>Privacy</button> · <button onClick={() => navigate("terms")}>Terms</button> · <button onClick={() => navigate("disclaimer")}>Disclaimer</button> · <button onClick={() => navigate("motion")}>Motion</button> · <button onClick={() => navigate("style-guide")}>Style Guide</button></span><span>This website is for general information and does not constitute solicitation or advertisement.</span></div>
+    <div className="footer__bottom"><span>© {new Date().getFullYear()} Bondre Neve & Associates. All rights reserved.</span><span><button onClick={() => navigate("privacy")}>Privacy</button> · <button onClick={() => navigate("terms")}>Terms</button> · <button onClick={() => navigate("disclaimer")}>Disclaimer</button></span><span>This website is for general information and does not constitute solicitation or advertisement.</span></div>
   </footer>;
 }
 
@@ -632,8 +631,7 @@ function App() {
     home: <Home navigate={navigate} />, about: <About navigate={navigate} />, services: <Services navigate={navigate} />,
     service: <ServiceDetail navigate={navigate} />, industries: <Industries />, contact: <Contact />,
     privacy: <Legal type="privacy" />, terms: <Legal type="terms" />, disclaimer: <Legal type="disclaimer" />,
-    motion: <MotionPage />,
-    "style-guide": <StyleGuidePage />,
+
     "404": <StatePage type="404" navigate={navigate} />, "500": <StatePage type="500" navigate={navigate} />,
     maintenance: <StatePage type="maintenance" navigate={navigate} />,
   };
