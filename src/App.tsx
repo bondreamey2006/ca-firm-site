@@ -23,7 +23,7 @@ const routeFromHash = (): Route => {
 
 const contact = {
   phone: "+91 9403285122",
-  email: "caombondre@gmail.com",
+  email: "caombondre@bondreneveassociates.com",
   address: "Pune, Maharashtra, India",
 };
 
@@ -207,7 +207,7 @@ function Footer({ navigate }: { navigate: (r: Route) => void }) {
       </div>
       <div><h4>Quick links</h4>{[["About", "about"], ["Areas of Practice", "services"], ["Industries", "industries"], ["Contact", "contact"]].map(([l, r]) => <button key={l} onClick={() => navigate(r as Route)}>{l}</button>)}</div>
       <div><h4>Services</h4>{["Virtual CFO Services", "Business Advisory", "Process Automation", "Compliance Services", "Statutory & Tax Audits", "GST Representation"].map(l => <button key={l} onClick={() => navigate("service")}>{l}</button>)}</div>
-      <div><h4>Contact</h4><a href={`tel:${contact.phone}`}>{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a><p>{contact.address}</p><a href="#/contact">View map & directions →</a><div className="social-links"><a href="https://in.linkedin.com/in/om-bondre-5575b3281" target="_blank" rel="noreferrer" aria-label="Open CA Om Anil Bondre on LinkedIn">in</a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=caombondre%40gmail.com" target="_blank" rel="noreferrer" aria-label="Compose an email to CA Om Anil Bondre in Gmail"><Icon name="mail" size={14} /></a></div></div>
+      <div><h4>Contact</h4><a href={`tel:${contact.phone}`}>{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a><p>{contact.address}</p><a href="#/contact">View map & directions →</a><div className="social-links"><a href="https://in.linkedin.com/in/om-bondre-5575b3281" target="_blank" rel="noreferrer" aria-label="Open CA Om Anil Bondre on LinkedIn">in</a><a href={`mailto:${contact.email}`} aria-label="Compose an email to CA Om Anil Bondre"><Icon name="mail" size={14} /></a></div></div>
     </div>
 
     <div className="footer__bottom"><span>© {new Date().getFullYear()} Bondre Neve & Associates. All rights reserved.</span><span><button onClick={() => navigate("privacy")}>Privacy</button> · <button onClick={() => navigate("terms")}>Terms</button> · <button onClick={() => navigate("disclaimer")}>Disclaimer</button></span><span>This website is for general information and does not constitute solicitation or advertisement.</span></div>
@@ -571,7 +571,7 @@ function StatePage({ type, navigate }: { type: "404" | "500" | "maintenance"; na
     <Button onClick={() => navigate("home")}>Back to Home</Button>
     <div className="state-contact">
       <a href="tel:+919403285122"><Icon name="phone" /><span><small>Call</small>{contact.phone}</span></a>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=caombondre%40gmail.com" target="_blank" rel="noreferrer"><Icon name="mail" /><span><small>Email</small>{contact.email}</span></a>
+      <a href={`mailto:${contact.email}`}><Icon name="mail" /><span><small>Email</small>{contact.email}</span></a>
       <a href="https://wa.me/919403285122" target="_blank" rel="noreferrer"><Icon name="whatsapp" /><span><small>WhatsApp</small>Message the office</span></a>
     </div>
   </section>;
@@ -584,7 +584,7 @@ function OfflineFallback({ onHome }: { onHome: () => void }) {
     <p>Use the details below while the website connection is unavailable.</p>
     <div>
       <a href="tel:+919403285122"><Icon name="phone" size={17} />{contact.phone}</a>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=caombondre%40gmail.com" target="_blank" rel="noreferrer"><Icon name="mail" size={17} />{contact.email}</a>
+      <a href={`mailto:${contact.email}`}><Icon name="mail" size={17} />{contact.email}</a>
       <a href="https://wa.me/919403285122" target="_blank" rel="noreferrer"><Icon name="whatsapp" size={17} />WhatsApp</a>
     </div>
     <button onClick={onHome}>Back to Home <Icon name="arrow" size={15} /></button>
@@ -595,7 +595,7 @@ function FloatingActions({ navigate }: { navigate: (r: Route) => void }) {
   return <div className="floating-actions" aria-label="Contact options">
     <a className="floating-action floating-action--whatsapp" href="https://wa.me/919403285122" target="_blank" rel="noreferrer" aria-label="Chat with Bondre Neve & Associates on WhatsApp"><Icon name="whatsapp" /><span>WhatsApp</span></a>
     <a className="floating-action floating-action--call" href="tel:+919403285122" aria-label="Call Bondre Neve & Associates at +91 9403285122"><Icon name="phone" /><span>Call office</span></a>
-    <a className="floating-action floating-action--email" href="https://mail.google.com/mail/?view=cm&fs=1&to=caombondre%40gmail.com" target="_blank" rel="noreferrer" aria-label="Compose an email to caombondre@gmail.com in Gmail"><Icon name="mail" /><span>Email</span></a>
+    <a className="floating-action floating-action--email" href="mailto:caombondre@bondreneveassociates.com" aria-label="Compose an email to caombondre@bondreneveassociates.com"><Icon name="mail" /><span>Email</span></a>
     <button className="floating-action floating-action--enquire" onClick={() => navigate("contact")}><Icon name="arrow" /><span>Enquire</span></button>
   </div>;
 }
